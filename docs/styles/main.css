@@ -1,26 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
 body {
-    color: #004466;
-    font-family: 'Open Sans', sans-serif;
-		font-size: 16px;
-    line-height: 145%;
+  font-family: 'Open Sans', sans-serif  ;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 2em;
 }
 
 a {
     color: #ea0b8c;
 }
-
+/*
 button {
     background: #c8edff;
     color: #004466;
     cursor: pointer;
     font-size: 1.2rem;
     padding: .75rem;
-}
+}*/
 
 header,
 section,
 footer {
     margin: 1rem;
+}
+
+h1 {
+  font-size: 1.6em;
+}
+
+.main {
+  margin-top: 1em ;
+}
+
+.main p {
+  display: inline-block;
+}
+    
+.main p input,
+.main p button {
+    border: 1px solid #666;
+    border-radius: 5px;
+    font-size: 1.2em;
+    padding: .5em;
+    text-align: center;
+    width: 3em;
+}
+
+.main p button {
+    background: #5fb8dd;
+    border: 1px solid #5fb8dd;
+    cursor: pointer;
+    width: auto;
+}
+    
+.main p button:hover {
+      background-color: darken(#5fb8dd, 5%);
 }
 
 footer {

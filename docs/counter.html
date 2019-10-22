@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Counter with vanilla JS (7GUIs tasks)</title>
+  <meta name="description" content="A very simple counter built with javascript.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+	<header role="banner">
+		<h1>7GUIs tasks: a counter</h1>
+	</header>
+	
+	<section class="main" role="main">
+	  <p>
+	    <input type="text" id="readonly_counter" readonly value="0" />
+	  </p>
+  
+	  <p>
+	    <button role="button" id="increase_count" onclick="increaseCount()">
+	      Increase count
+	    </button>
+	  </p>
+	</section>
+
+	<footer>
+		<p>
+			Made with cold brew &amp; baroque music by <a href="https://github.com/dotsara">dotsara</a>.
+		</p>
+	</footer>
+
+<script>
+	let counter = document.getElementById('readonly_counter');
+
+	function increaseCount() {
+	  ++counter.value;
+	};
+</script>
+</body>
+</html>
