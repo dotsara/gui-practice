@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Temperature converter with vanilla JS (7GUIs tasks)</title>
+  <meta name="description" content="Converting temperatures with javascript.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+	<header role="banner">
+		<h1>7GUIs tasks: a temperature converter</h1>
+	</header>
+	
+<section class="main" role="main">
+  <p>
+      <input type="text" id="temp_celsius" value="" />
+      <label for="temp_celsius">Celsius</label> = 
+    <input type="text" id="temp_fahrenheit" value="" />
+    <label for="temp_fahrenheit">Fahrenheit</label>
+  </p>
+  
+<!--   
+	<p class="error" id="error_message">
+    error message
+  </p> -->
+</section>
+
+<section class="info">
+  <p>
+    Currently, the conversion waits a second (1s) to afford a little bit of time to enter more than 1 digit.
+  </p>
+</section>
+
+	<footer>
+		<p>
+			Made with Diet Coke&reg; &amp; downtempo music by <a href="https://github.com/dotsara">dotsara</a>.
+		</p>
+	</footer>
+
+<script>
+
+	// functions doing the work
+	const fahrToCels = function (fahr) {
+	  return ((fahr - 32) * (5/9)).toFixed(0);
+	};
+	const celsToFahr = function (celsius) {
+	  return (((celsius * 9) / 5) + 32).toFixed(0);
+	};
+	function debounce(fn, duration) {
+	  var timer;
+	  return function(){
+	    clearTimeout(timer);
+	    timer = setTimeout(fn, duration);
+	  }
+	}
+	var errNan = false; // start with assumption user enters a number
+	const errMsgNaN = "That's not a number, we can't convert it. Try again?";
+
+	let tempC = document.getElementById("temp_celsius");
+	let tempF = document.getElementById("temp_fahrenheit");
+
+	// having two of these back-to-back is a sign
+	// this could be refactored for sure. 
+
+	tempC.addEventListener("keyup", debounce(() => {
+	  tempF.value = celsToFahr(tempC.value);
+	}, 500));
+
+	tempF.addEventListener("keyup", debounce(() => {
+	  tempC.value = fahrToCels(tempF.value);
+	}, 500));
+
+	// goal: check user-entered info, if it isn't a number
+	// display an error message (errMsgNan).
+
+
+</script>
+</body>
+</html>
