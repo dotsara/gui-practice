@@ -58,14 +58,18 @@ h1 {
       background-color: darken(#5fb8dd, 5%);
 }
 
-p.error {
+.error {
 	background: pink;
 	display: block;
 	margin: 1em 0;
 	padding: .5em;
+	visibility: hidden;
 	width: 45%;
 }
 
+.visible {
+	visibility: visible;
+}
 footer {
     clear: both;
     padding-top: 5rem;

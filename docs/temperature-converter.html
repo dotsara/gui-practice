@@ -22,11 +22,9 @@
     <input type="text" id="temp_fahrenheit" value="" />
     <label for="temp_fahrenheit">Fahrenheit</label>
   </p>
-  
-<!--   
+   
 	<p class="error" id="error_message">
-    error message
-  </p> -->
+  </p>
 </section>
 
 <section class="info">
@@ -43,6 +41,7 @@
 
 <script>
 
+
 	// functions doing the work
 	const fahrToCels = function (fahr) {
 	  return ((fahr - 32) * (5/9)).toFixed(0);
@@ -57,8 +56,8 @@
 	    timer = setTimeout(fn, duration);
 	  }
 	}
-	var errNan = false; // start with assumption user enters a number
-	const errMsgNaN = "That's not a number, we can't convert it. Try again?";
+	const errorMessageNaN = "That's not a number, we can't convert it. Try again?";
+	var errorMessageContainer = document.getElementById("error_message");
 
 	let tempC = document.getElementById("temp_celsius");
 	let tempF = document.getElementById("temp_fahrenheit");
@@ -67,16 +66,35 @@
 	// this could be refactored for sure. 
 
 	tempC.addEventListener("keyup", debounce(() => {
-	  tempF.value = celsToFahr(tempC.value);
+	  let check = isThisANumber(tempC.value);
+	  if (check) {
+	    tempF.value = celsToFahr(tempC.value);
+	  } else {
+	    displayErrorMessage();
+	  }  
 	}, 500));
 
 	tempF.addEventListener("keyup", debounce(() => {
-	  tempC.value = fahrToCels(tempF.value);
+	  let check = isThisANumber(tempF.value);
+	  if (check) {
+	    tempC.value = celsToFahr(tempF.value);
+	  } else {
+	    displayErrorMessage();
+	  }  
 	}, 500));
 
 	// goal: check user-entered info, if it isn't a number
 	// display an error message (errMsgNan).
 
+	// trying a function from Stack OverFlow
+	function isThisANumber(n) {
+	  return !isNaN(parseFloat(n)) && isFinite(n);
+	};
+
+	function displayErrorMessage() {
+	  errorMessageContainer.classList.toggle("visible");
+	  errorMessageContainer.innerHTML = errorMessageNaN;
+	};
 
 </script>
 </body>
